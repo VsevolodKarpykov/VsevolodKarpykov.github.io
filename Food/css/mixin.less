@@ -1,0 +1,34 @@
+.fonts-name(@font-name, @font-file-name){
+  @font-face { 
+  font-family: '@{font-name}';
+  src: local('@{font-file-name}'),
+       url('../fonts/@{font-file-name}.woff2') format('woff2'), 
+       url('../fonts/@{font-file-name}.woff') format('woff'),
+       url('../fonts/@{font-file-name}.eot') format('embedded-opentype'),
+       url('../fonts/@{font-file-name}.ttf') format('truetype');
+  }
+}
+
+.contr(@contr-width){
+  .container{
+    max-width: @contr-width + 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0 auto;
+  }
+}
+
+.contr-name(@contr-name ,@contr-width){
+  @padd: 10px;
+  .@{contr-name}{
+    max-width: @contr-width + @padd + @padd;
+    padding-left: @padd;
+    padding-right: @padd;
+    margin: 0 auto;
+  }
+}
+
+.ad-fz(@min, @max){
+  @dif: @max - @min;
+  font-size: calc(~"@{min}px + @{dif} * ((100vw - 320px) / (@{layout-width} - 320))");
+}
