@@ -50,7 +50,7 @@
  
 
  function is_touch_device() {
-  return !!('ontouchstart' in window);
+  return !!('touchstart' in window);
 }
 
 $('p').text(is_touch_device());
