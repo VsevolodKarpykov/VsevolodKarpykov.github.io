@@ -1,0 +1,59 @@
+
+*,*::before,*::after{
+  box-sizing:border-box;
+  padding: 0;
+  background-repeat: no-repeat;
+}
+
+html{
+  font-family: sans-serif;
+}
+
+body{
+  word-wrap: break-word;
+  line-height:1.5;
+  margin:0;
+  overflow-x: hidden;
+}
+
+ol, ul{
+  list-style:none;
+}
+
+img{
+  max-width:100%;
+  display:block;
+  margin:0;
+}
+
+a{
+  text-decoration: none;
+}
+
+input,button,textarea,select{
+  font:inherit;
+  cursor: pointer;
+}
+
+input::-ms-clear{
+  display: none;
+}
+
+button:-moz-focus-inner{
+  border: none;
+}
+
+select{
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+select::-ms-expand{
+  display: none;
+}
+
+input:not([autofocus]):focus::placeholder,
+textarea:not([autofocus]):focus::placeholder{
+  color: transparent;
+}
+
+
