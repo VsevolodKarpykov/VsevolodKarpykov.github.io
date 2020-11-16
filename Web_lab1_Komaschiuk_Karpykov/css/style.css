@@ -20,9 +20,9 @@
 }
 
 @font-face { 
-  font-family: 'Raleway-Semibold';
+  font-family: 'Raleway-SemiBold';
   src:
-       url('../fonts/Raleway-Semibold.ttf') format('truetype');
+       url('../fonts/Raleway-SemiBold.ttf') format('truetype');
 }
 
 /* Scrollbar styling */
@@ -170,7 +170,7 @@ section{
 
 h2{
   text-align: center;
-  font: 30px Raleway-Semibold;
+  font: 30px Raleway-SemiBold;
   color: #202020;
   padding: 20px 0 0;
   cursor: pointer;
@@ -256,7 +256,7 @@ h2.active::after{
 }
 
 .card .name{
-  font: 19px Raleway-Semibold;
+  font: 19px Raleway-SemiBold;
   margin: 10px 0 10px; 
 }
 .card .person-description{
@@ -341,7 +341,7 @@ p{
 }
 
 .testimonial-title{
-  font: 20px Raleway-Semibold;
+  font: 20px Raleway-SemiBold;
   color: #BA854C;
 }
 
