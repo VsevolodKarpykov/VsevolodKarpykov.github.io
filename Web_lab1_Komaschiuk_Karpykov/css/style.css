@@ -249,6 +249,15 @@ h2.active::after{
   align-items: center;
   width: 300px;
 }
+
+/*.card:not(:last-child){
+  margin-bottom: 30px;
+}
+
+.card:last-child{
+  margin-top: 50px;
+}*/
+
 .card img{
   width: 220px;
   border-radius: 50%;
@@ -545,8 +554,8 @@ figcaption svg:hover{
 }
 
 @media (max-width: 767px){
-  .card:nth-child(2){
-    margin-top: 40px;
+  .card:not(:last-child){
+    margin-bottom: 40px;
   }
   h1{
     font-size: 34px;
