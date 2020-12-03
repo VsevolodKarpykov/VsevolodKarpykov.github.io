@@ -42,18 +42,32 @@ var spoilers = document.querySelectorAll('.spoiler');
 
 for (var i = 0; i < spoilers.length; i++) {
   spoilers[i].onclick = function(){
-    this.classList.toggle('active');
-    var spoilerItem = this.nextSibling.nextSibling;
-    spoilerItem.classList.toggle('active');
-    if(spoilerItem.style.maxHeight){
-      spoilerItem.style.maxHeight = null;
+    this.classList.toggle('spoiler-active');
+
+    var spoilerItem = this.nextElementSibling;
+    spoilerItem.classList.toggle('spoiler-active');
+
+    if(getComputedStyle(spoilerItem).maxHeight === '0px' && spoilerItem.classList.contains('spoiler-active')){
+      spoilerItem.style.maxHeight = spoilerItem.scrollHeight + 'px';
+      function computeHeight(){
+        if(spoilerItem.classList.contains('spoiler-active')){
+          spoilerItem.style.maxHeight = 'none';
+        }
+      }
+      setTimeout(computeHeight, 300);
     }
-    else
-    {
-      spoilerItem.style.maxHeight = spoilerItem.scrollHeight + 30 + 'px';
+    
+    else{
+       spoilerItem.style.maxHeight = spoilerItem.scrollHeight + 'px';
+       function returnHeight(){
+        spoilerItem.style.maxHeight = '0px';
+       }
+      setTimeout(returnHeight, 10);
     }
   }
 }
+
+
 
 // Sliders
 
@@ -76,3 +90,6 @@ new tns({
     }
   }
 });
+
+
+
