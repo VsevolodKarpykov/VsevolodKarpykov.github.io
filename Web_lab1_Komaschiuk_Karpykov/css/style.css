@@ -172,10 +172,13 @@ h2{
   text-align: center;
   font: 30px Raleway-SemiBold;
   color: #202020;
-  padding: 20px 0 0;
   cursor: pointer;
   transition: filter .25s;
   filter: brightness(0);
+}
+
+.container h2:not(:last-child){
+  margin-top: 20px;
 }
 
 h2:hover{
@@ -194,13 +197,16 @@ h2::after{
   background-size: 100%;
 }
 
-h2.active::after{
+h2.spoiler-active::after{
   transform: rotate(-90deg);
 }
 
 .container{
   background-color: #fff;
   border-radius: 20px;
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 20px 10px 0;
 }
 
 .skill{
@@ -210,10 +216,9 @@ h2.active::after{
 }
 
 .widget{
-  padding: 0;
-  max-height: 0;
+  max-height: 0px;
   overflow: hidden;
-  transition: max-height 200ms, padding 200ms;
+  transition: max-height .3s;
 }
 
 .widget-body{
@@ -240,7 +245,9 @@ h2.active::after{
 }
 
 .row{
+  display: flex;
   justify-content: center;
+  align-items: flex-start;
 }
 
 .card{
@@ -250,13 +257,12 @@ h2.active::after{
   width: 300px;
 }
 
-/*.card:not(:last-child){
-  margin-bottom: 30px;
+@media (max-width: 767px)
+{
+  .row{
+    flex-wrap: wrap;
+  }
 }
-
-.card:last-child{
-  margin-top: 50px;
-}*/
 
 .card img{
   width: 220px;
@@ -399,22 +405,22 @@ button:focus{
   border-radius: 50%;
 }
 
-.tns-controls{
-  position: absolute;
-  left: 10px;
-  right: 10px;
-  top: 92px;
-  display: flex;
-  justify-content: space-between;
-  z-index: 2;
-}
+
 
 .tns-controls button{
   width: 30px;
   height: 30px;
-  top: 92px;
   font-size: 0;
+  cursor: pointer;
+  z-index: 2;
+  position: absolute;
+  top: 92px;
   background-image: url("data:image/svg+xml,%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 300 300' style='enable-background:new 0 0 300 300;' xml:space='preserve'%3E%3Cg%3E%3Cg%3E%3Cpath fill='%23BA854C' d='M150,0C67.157,0,0,67.157,0,150c0,82.841,67.157,150,150,150s150-67.159,150-150C300,67.157,232.843,0,150,0z M195.708,160.159c-0.731,0.731-1.533,1.349-2.368,1.886l-56.295,56.295c-2.734,2.736-6.318,4.103-9.902,4.103 s-7.166-1.367-9.902-4.103c-5.47-5.47-5.47-14.34,0-19.808l48.509-48.516l-48.265-48.265c-5.47-5.473-5.47-14.34,0-19.808 c5.47-5.47,14.338-5.467,19.808-0.003l56.046,56.043c0.835,0.537,1.637,1.154,2.365,1.886c2.796,2.796,4.145,6.479,4.082,10.146 C199.852,153.68,198.506,157.361,195.708,160.159z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A");
+}
+
+.tns-controls button:last-child{
+  right: 20px;
+  /*transform: translate(100px);*/
 }
 
 figure{
@@ -423,6 +429,7 @@ figure{
 
 .tns-controls button:first-child{
   transform: rotate(180deg);
+  left: 20px;
 }
 
 /*Form styling*/
@@ -455,7 +462,7 @@ textarea{
   grid-column: 1/2;
   min-height: 200px;
   max-height: 450px;
-  resize: none;
+  resize: vertical;
 }
 
 input:focus, textarea:focus{
@@ -550,6 +557,7 @@ figcaption svg:hover{
 .project-photos{
   max-width: 1600px;
   margin: 40px auto;
+  padding: 0 10px;
   position: relative;
 }
 
