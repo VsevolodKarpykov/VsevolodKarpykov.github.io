@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="format-detection" content="telephone=no">
+  <!-- <link rel="shortcut icon" type="image/ico" href="img/favicon.ico"> -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+  <link rel="stylesheet" href="css/index.css">
+  <title>Getdesk - Search</title>
+</head>
+
+<body>
+  <div class="page">
+    <header class="header">
+      <nav class="nav">
+        <div class="container">
+          <div class="nav__logo">
+            <a href="index.html"><img src="img/logo.png" alt="logo"></a>
+          </div>
+          <div class="nav__bar">
+            <div class="rent-office">
+              <a href="#">Сдайте офис</a>
+            </div>
+            <div class="choose-town">
+              <input type="text" placeholder="Выберите город" name="choose-town" class="choose-town__input">
+              <div class="geo"><img src="img/geo.png" alt=""></div>
+              <button class="search"><img src="img/lupa.svg" alt=""></button>
+            </div>
+            <div class="choose-date" id="choose-date">
+              <input type="text" id="datepicker" class="visually-hidden">
+              <label for="datepicker" class="datepicker-label"></label>
+              <span class="choose-date__icon"><svg width="20" height="21" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill="#E5E5E5" d="M0 0h20v21H0z"/><g clip-path="url(#clip0_0:1)"><path fill="#fff" d="M-1316-52H604v1570h-1920z"/><g filter="url(#filter0_d_0:1)"><path fill="#fff" d="M-1316-52H604V73h-1920z"/></g><rect x="-45.5" y="-19.5" width="249" height="59" rx="4.5" fill="#fff"/><path d="M1.093 7.404h17.824m-4.475 3.906h.01m-4.447 0h.009m-4.456 0h.01m8.874 3.886h.01m-4.447 0h.009m-4.456 0h.01M14.043 0v3.29M5.965 0v3.29" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path clip-rule="evenodd" d="M14.238 1.58H5.771C2.834 1.58 1 3.214 1 6.221v9.05C1 18.326 2.834 20 5.771 20h8.458C17.175 20 19 18.355 19 15.348V6.222c.01-3.007-1.816-4.643-4.762-4.643z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></g><defs><clipPath id="clip0_0:1"><path fill="#fff" transform="translate(-1316 -52)" d="M0 0h1920v1570H0z"/></clipPath><filter id="filter0_d_0:1" x="-1366" y="-97" width="2020" height="225" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/><feOffset dy="5"/><feGaussianBlur stdDeviation="25"/><feColorMatrix values="0 0 0 0 0.145098 0 0 0 0 0.00392157 0 0 0 0 0 0 0 0 0.2 0"/><feBlend in2="BackgroundImageFix" result="effect1_dropShadow_0:1"/><feBlend in="SourceGraphic" in2="effect1_dropShadow_0:1" result="shape"/></filter></defs></svg></span>
+              <span class="choose-date__text">Укажите дату</span>
+            </div>
+            <div class="nav__filters"><svg width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.773 9.599c.018.016.035.03.052.049A5.874 5.874 0 018.5 13.774v3.984l2.236-1.218a.556.556 0 00.286-.491v-2.287c0-1.55.588-3.01 1.657-4.11l4.837-5.144A1.79 1.79 0 0018 3.277V2.34c0-.464-.366-.841-.814-.841H2.316a.83.83 0 00-.816.84v.937c0 .46.172.898.485 1.23l4.788 5.092zM8.146 19.5A1.146 1.146 0 017 18.346v-4.572a4.383 4.383 0 00-1.194-3.023.645.645 0 01-.066-.062L.893 5.536A3.284 3.284 0 010 3.276v-.935C0 1.05 1.04 0 2.315 0h14.871C18.462 0 19.5 1.05 19.5 2.34v.937c0 .843-.317 1.645-.89 2.258l-4.848 5.154a4.384 4.384 0 00-1.242 3.073v2.287c0 .756-.409 1.448-1.066 1.808L8.691 19.36c-.172.093-.359.14-.546.14z" fill="#ED4040"/></svg></div>
+            <a href="#" class="nav__bar_link lang"><svg width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="22" fill="#F74D4A"/><path d="M24.84 26.317a.416.416 0 00-.32-.15h-5.04a.416.416 0 00-.41.492C19.667 29.904 20.818 32 22 32c1.18 0 2.33-2.096 2.93-5.341a.417.417 0 00-.09-.342zm6.685-7.361a.416.416 0 00-.397-.29h-4.692a.416.416 0 00-.414.46 28.777 28.777 0 010 5.75.416.416 0 00.414.457h4.692a.416.416 0 00.397-.29 9.992 9.992 0 000-6.087zm-5.725-1.47c.034.2.208.347.411.347h4.206a.418.418 0 00.366-.616 10.083 10.083 0 00-5.897-4.79.417.417 0 00-.484.602c.607 1.088 1.09 2.63 1.398 4.457zm-1.037 1.181h-5.525a.417.417 0 00-.414.372A27.745 27.745 0 0018.667 22c0 1.003.053 2 .157 2.962a.417.417 0 00.414.371h5.525c.213 0 .391-.16.414-.371.104-.962.157-1.959.157-2.962 0-1.003-.053-2-.157-2.961a.417.417 0 00-.414-.372zm-11.18-.834h4.205a.417.417 0 00.411-.347c.308-1.828.791-3.369 1.398-4.457a.417.417 0 00-.484-.602 10.083 10.083 0 00-5.896 4.79.417.417 0 00.366.616zm4.29 7.363a.416.416 0 00.106-.321A28.779 28.779 0 0117.833 22c0-.95.05-1.918.146-2.875a.416.416 0 00-.415-.458h-4.692a.416.416 0 00-.397.29 9.99 9.99 0 000 6.087c.055.172.216.29.397.29h4.692c.118 0 .23-.05.309-.138zm.327 1.318a.417.417 0 00-.412-.347h-4.205a.418.418 0 00-.366.616 10.082 10.082 0 005.896 4.79.418.418 0 00.484-.602c-.607-1.088-1.09-2.629-1.398-4.457zm12.217-.347H26.21a.417.417 0 00-.41.347c-.308 1.828-.792 3.369-1.399 4.457a.417.417 0 00.484.602 10.082 10.082 0 005.897-4.79.417.417 0 00-.366-.616zM19.16 17.683c.079.095.196.15.32.15h5.04a.416.416 0 00.41-.492C24.333 14.096 23.182 12 22 12c-1.18 0-2.33 2.096-2.93 5.341a.416.416 0 00.09.342z" fill="#fff"/></svg></a>
+            <a href="#" class="nav__bar_link login"><svg width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="22" fill="#F74D4A"/><path fill-rule="evenodd" clip-rule="evenodd" d="M27.294 17.291A5.274 5.274 0 0122 22.583a5.275 5.275 0 01-5.294-5.292A5.274 5.274 0 0122 12a5.273 5.273 0 015.294 5.291zM22 32c-4.338 0-8-.705-8-3.425 0-2.721 3.685-5.211 8-5.211 4.339 0 8 2.515 8 5.235C30 31.32 26.315 32 22 32z" fill="#fff"/></svg></a>
+          </div>
+        </div>
+      </nav>
+      <div class="main-block">
+        <div class="main-block__child">
+          <div class="offices-block">
+            <h1 class="page-title">Аренда офиса: Москва</h1>
+            <div class="filters">
+              <div class="filter__wrapper">
+                <button class="filter__button open-popup" data-popup="popup-price">Цена</button>
+              </div>
+              <div class="filter__wrapper">
+                <button class="filter__button open-popup" data-popup="popup-char">Характеристики офиса</button>
+              </div>
+              <div class="filter__wrapper">
+                <button class="filter__button open-popup" data-popup="popup-booking">Мгновенное бронирование</button>
+              </div>
+              <div class="filter__wrapper">
+                <button class="filter__button open-popup" data-popup="popup-comfort">Удобства</button>
+              </div>
+            </div>
+            <div class="offices">
+              <div class="office__text">
+                Более <span class="blood">300</span> вариантов офисных помещений по заданым параметрам.
+              </div>
+              <div class="office">
+                <div class="office__slider">
+                  <div class="office__description_name-price">
+                    <div class="office__title_mob">Офис на Орловской</div>
+                    <div class="office__price_mob">1 300 ₽/сут</div>
+                  </div>
+                  <div class="office__description_type-square">
+                    <div class="office__type_mob">Офис</div>
+                    <div class="office__rating_mob">5.0 <svg width="13" height="13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.2 8.075a.688.688 0 00-.2.606l.556 3.075a.675.675 0 01-.282.675.688.688 0 01-.731.05l-2.768-1.443a.706.706 0 00-.313-.082h-.169a.507.507 0 00-.169.056l-2.768 1.45a.73.73 0 01-.444.07.695.695 0 01-.556-.795l.556-3.075a.7.7 0 00-.2-.612L.456 5.863a.675.675 0 01-.169-.707.702.702 0 01.556-.468l3.106-.451a.695.695 0 00.55-.38L5.87 1.05a.65.65 0 01.124-.169L6.05.838a.42.42 0 01.1-.082l.069-.025.106-.043h.263a.7.7 0 01.55.375l1.387 2.793a.69.69 0 00.519.38l3.106.452a.708.708 0 01.569.468.679.679 0 01-.181.707L10.2 8.075z" fill="#ED4040"/></svg></div>
+                    <div class="office__description--parameters_mob">
+                      <div class="office__places">80 мест</div>
+                      <div class="office__square mob">355 м<sup>2</sup></div>
+                    </div>
+                  </div>
+                  <div class="slider-wrap">
+                    <div class="like_mob"><svg width="18" height="17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.534 4.055L9 5.261l.466-1.206c.593-1.53 2.277-2.68 4.034-2.68 2.269 0 4 1.71 4 4 0 1.57-.839 3.015-2.42 4.773-.93 1.036-2.071 2.132-3.386 3.395-.831.799-1.732 1.664-2.694 2.624-.962-.96-1.863-1.825-2.694-2.624-1.315-1.263-2.455-2.359-3.387-3.395C1.34 8.39.5 6.946.5 5.375c0-2.29 1.731-4 4-4 1.755 0 3.441 1.15 4.034 2.68z" stroke="#ED4040"/></svg></div>
+                    <div class="slider">
+                      <img src="img/office-photo-search.jpg" alt="фото офиса">
+                    </div>
+                  </div>
+                </div>
+                <div class="office__description">
+                  <div class="office__description--child">
+                    <div class="office__title">Офис на Орловской</div>
+                    <div class="like-button"><svg width="18" height="17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.534 4.055L9 5.261l.466-1.206c.593-1.53 2.277-2.68 4.034-2.68 2.269 0 4 1.71 4 4 0 1.57-.839 3.015-2.42 4.773-.93 1.036-2.071 2.132-3.386 3.395-.831.799-1.732 1.664-2.694 2.624-.962-.96-1.863-1.825-2.694-2.624-1.315-1.263-2.455-2.359-3.387-3.395C1.34 8.39.5 6.946.5 5.375c0-2.29 1.731-4 4-4 1.755 0 3.441 1.15 4.034 2.68z" stroke="#ED4040"/></svg></div>
+                    <div class="rating">
+                      5.0 <svg width="13" height="13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.2 8.075a.688.688 0 00-.2.606l.556 3.075a.675.675 0 01-.282.675.688.688 0 01-.731.05l-2.768-1.443a.706.706 0 00-.313-.082h-.169a.507.507 0 00-.169.056l-2.768 1.45a.73.73 0 01-.444.07.695.695 0 01-.556-.795l.556-3.075a.7.7 0 00-.2-.612L.456 5.863a.675.675 0 01-.169-.707.702.702 0 01.556-.468l3.106-.451a.695.695 0 00.55-.38L5.87 1.05a.65.65 0 01.124-.169L6.05.838a.42.42 0 01.1-.082l.069-.025.106-.043h.263a.7.7 0 01.55.375l1.387 2.793a.69.69 0 00.519.38l3.106.452a.708.708 0 01.569.468.679.679 0 01-.181.707L10.2 8.075z" fill="#ED4040"/></svg>
+                    </div>
+                  </div>
+                  <div class="office__type">Офис</div>
+                  <div class="office__features">
+                    <div class="office-feature">Высокоскоростной WiFi</div>
+                    <div class="office-feature">Открыто круглосуточно</div>
+                    <div class="office-feature">Встреча гостей/секретарь</div>
+                    <div class="office-feature">Кофемашина</div>
+                  </div>
+                  <div class="office__description--parameters">
+                    <div class="office__places">80 мест</div>
+                    <div class="office__square">355 м<sup>2</sup></div>
+                    <div class="office__price">1 300 ₽/сут</div>
+                  </div>
+                </div>
+              </div>
+              <div class="office">
+                <div class="office__slider">
+                  <div class="office__description_name-price">
+                    <div class="office__title_mob">Офис на этаже БЦ Васильевский</div>
+                    <div class="office__price_mob">1 300 ₽/сут</div>
+                  </div>
+                  <div class="office__description_type-square">
+                    <div class="office__type_mob">Переговорная комната</div>
+                    <div class="office__rating_mob">5.0 <svg width="13" height="13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.2 8.075a.688.688 0 00-.2.606l.556 3.075a.675.675 0 01-.282.675.688.688 0 01-.731.05l-2.768-1.443a.706.706 0 00-.313-.082h-.169a.507.507 0 00-.169.056l-2.768 1.45a.73.73 0 01-.444.07.695.695 0 01-.556-.795l.556-3.075a.7.7 0 00-.2-.612L.456 5.863a.675.675 0 01-.169-.707.702.702 0 01.556-.468l3.106-.451a.695.695 0 00.55-.38L5.87 1.05a.65.65 0 01.124-.169L6.05.838a.42.42 0 01.1-.082l.069-.025.106-.043h.263a.7.7 0 01.55.375l1.387 2.793a.69.69 0 00.519.38l3.106.452a.708.708 0 01.569.468.679.679 0 01-.181.707L10.2 8.075z" fill="#ED4040"/></svg></div>
+                    <div class="office__description--parameters_mob">
+                      <div class="office__places">80 мест</div>
+                      <div class="office__square mob">355 м<sup>2</sup></div>
+                    </div>
+                  </div>
+                  <div class="slider-wrap">
+                    <div class="like_mob"><svg width="18" height="17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.534 4.055L9 5.261l.466-1.206c.593-1.53 2.277-2.68 4.034-2.68 2.269 0 4 1.71 4 4 0 1.57-.839 3.015-2.42 4.773-.93 1.036-2.071 2.132-3.386 3.395-.831.799-1.732 1.664-2.694 2.624-.962-.96-1.863-1.825-2.694-2.624-1.315-1.263-2.455-2.359-3.387-3.395C1.34 8.39.5 6.946.5 5.375c0-2.29 1.731-4 4-4 1.755 0 3.441 1.15 4.034 2.68z" stroke="#ED4040"/></svg></div>
+                    <div class="slider">
+                      <img src="img/office-photo-search.jpg" alt="фото офиса">
+                      <img src="img/office-photo-search.jpg" alt="фото офиса">
+                      <img src="img/office-photo-search.jpg" alt="фото офиса">
+                    </div>
+                  </div>
+                </div>
+                <div class="office__description">
+                  <div class="office__description--child">
+                    <div class="office__title">Офис на этаже БЦ Васильевский</div>
+                    <div class="like-button"><svg width="18" height="17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.534 4.055L9 5.261l.466-1.206c.593-1.53 2.277-2.68 4.034-2.68 2.269 0 4 1.71 4 4 0 1.57-.839 3.015-2.42 4.773-.93 1.036-2.071 2.132-3.386 3.395-.831.799-1.732 1.664-2.694 2.624-.962-.96-1.863-1.825-2.694-2.624-1.315-1.263-2.455-2.359-3.387-3.395C1.34 8.39.5 6.946.5 5.375c0-2.29 1.731-4 4-4 1.755 0 3.441 1.15 4.034 2.68z" stroke="#ED4040"/></svg></div>
+                    <div class="rating">
+                      5.0 <svg width="13" height="13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.2 8.075a.688.688 0 00-.2.606l.556 3.075a.675.675 0 01-.282.675.688.688 0 01-.731.05l-2.768-1.443a.706.706 0 00-.313-.082h-.169a.507.507 0 00-.169.056l-2.768 1.45a.73.73 0 01-.444.07.695.695 0 01-.556-.795l.556-3.075a.7.7 0 00-.2-.612L.456 5.863a.675.675 0 01-.169-.707.702.702 0 01.556-.468l3.106-.451a.695.695 0 00.55-.38L5.87 1.05a.65.65 0 01.124-.169L6.05.838a.42.42 0 01.1-.082l.069-.025.106-.043h.263a.7.7 0 01.55.375l1.387 2.793a.69.69 0 00.519.38l3.106.452a.708.708 0 01.569.468.679.679 0 01-.181.707L10.2 8.075z" fill="#ED4040"/></svg>
+                    </div>
+                  </div>
+                  <div class="office__type">Переговорная комната</div>
+                  <div class="office__features">
+                    <div class="office-feature">Высокоскоростной WiFi</div>
+                    <div class="office-feature">Открыто круглосуточно</div>
+                    <div class="office-feature">Встреча гостей/секретарь</div>
+                    <div class="office-feature">Кофемашина</div>
+                  </div>
+                  <div class="office__description--parameters">
+                    <div class="office__places">80 мест</div>
+                    <div class="office__square">355 м<sup>2</sup></div>
+                    <div class="office__price">2 500 ₽/сут</div>
+                  </div>
+                </div>
+              </div>
+              <div class="office">
+                <div class="office__slider">
+                  <div class="office__description_name-price">
+                    <div class="office__title_mob">Офис на Орловской</div>
+                    <div class="office__price_mob">1 300 ₽/сут</div>
+                  </div>
+                  <div class="office__description_type-square">
+                    <div class="office__type_mob">Офис</div>
+                    <div class="office__rating_mob">5.0 <svg width="13" height="13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.2 8.075a.688.688 0 00-.2.606l.556 3.075a.675.675 0 01-.282.675.688.688 0 01-.731.05l-2.768-1.443a.706.706 0 00-.313-.082h-.169a.507.507 0 00-.169.056l-2.768 1.45a.73.73 0 01-.444.07.695.695 0 01-.556-.795l.556-3.075a.7.7 0 00-.2-.612L.456 5.863a.675.675 0 01-.169-.707.702.702 0 01.556-.468l3.106-.451a.695.695 0 00.55-.38L5.87 1.05a.65.65 0 01.124-.169L6.05.838a.42.42 0 01.1-.082l.069-.025.106-.043h.263a.7.7 0 01.55.375l1.387 2.793a.69.69 0 00.519.38l3.106.452a.708.708 0 01.569.468.679.679 0 01-.181.707L10.2 8.075z" fill="#ED4040"/></svg></div>
+                    <div class="office__description--parameters_mob">
+                      <div class="office__places">80 мест</div>
+                      <div class="office__square mob">355 м<sup>2</sup></div>
+                    </div>
+                  </div>
+                  <div class="slider-wrap">
+                    <div class="like_mob"><svg width="18" height="17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.534 4.055L9 5.261l.466-1.206c.593-1.53 2.277-2.68 4.034-2.68 2.269 0 4 1.71 4 4 0 1.57-.839 3.015-2.42 4.773-.93 1.036-2.071 2.132-3.386 3.395-.831.799-1.732 1.664-2.694 2.624-.962-.96-1.863-1.825-2.694-2.624-1.315-1.263-2.455-2.359-3.387-3.395C1.34 8.39.5 6.946.5 5.375c0-2.29 1.731-4 4-4 1.755 0 3.441 1.15 4.034 2.68z" stroke="#ED4040"/></svg></div>
+                    <div class="slider">
+                      <img src="img/office-photo-search.jpg" alt="фото офиса">
+                      <img src="img/office-photo-search.jpg" alt="фото офиса">
+                      <img src="img/office-photo-search.jpg" alt="фото офиса">
+                    </div>
+                  </div>
+                </div>
+                <div class="office__description">
+                  <div class="office__description--child">
+                    <div class="office__title">Зал для переговоров</div>
+                    <div class="like-button"><svg width="18" height="17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.534 4.055L9 5.261l.466-1.206c.593-1.53 2.277-2.68 4.034-2.68 2.269 0 4 1.71 4 4 0 1.57-.839 3.015-2.42 4.773-.93 1.036-2.071 2.132-3.386 3.395-.831.799-1.732 1.664-2.694 2.624-.962-.96-1.863-1.825-2.694-2.624-1.315-1.263-2.455-2.359-3.387-3.395C1.34 8.39.5 6.946.5 5.375c0-2.29 1.731-4 4-4 1.755 0 3.441 1.15 4.034 2.68z" stroke="#ED4040"/></svg></div>
+                    <div class="rating">
+                      5.0 <svg width="13" height="13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.2 8.075a.688.688 0 00-.2.606l.556 3.075a.675.675 0 01-.282.675.688.688 0 01-.731.05l-2.768-1.443a.706.706 0 00-.313-.082h-.169a.507.507 0 00-.169.056l-2.768 1.45a.73.73 0 01-.444.07.695.695 0 01-.556-.795l.556-3.075a.7.7 0 00-.2-.612L.456 5.863a.675.675 0 01-.169-.707.702.702 0 01.556-.468l3.106-.451a.695.695 0 00.55-.38L5.87 1.05a.65.65 0 01.124-.169L6.05.838a.42.42 0 01.1-.082l.069-.025.106-.043h.263a.7.7 0 01.55.375l1.387 2.793a.69.69 0 00.519.38l3.106.452a.708.708 0 01.569.468.679.679 0 01-.181.707L10.2 8.075z" fill="#ED4040"/></svg>
+                    </div>
+                  </div>
+                  <div class="office__type">Конференц зал</div>
+                  <div class="office__features">
+                    <div class="office-feature">Высокоскоростной WiFi</div>
+                    <div class="office-feature">Открыто круглосуточно</div>
+                    <div class="office-feature">Встреча гостей/секретарь</div>
+                    <div class="office-feature">Кофемашина</div>
+                  </div>
+                  <div class="office__description--parameters">
+                    <div class="office__places">80 мест</div>
+                    <div class="office__square">355 м<sup>2</sup></div>
+                    <div class="office__price">5 500 ₽/сут</div>
+                  </div>
+                </div>
+              </div>
+              <div class="office">
+                <div class="office__description_name-price">
+                  <div class="office__title_mob">Офис на Орловской</div>
+                  <div class="office__price_mob">1 300 ₽/сут</div>
+                </div>
+                <div class="office__description_type-square">
+                  <div class="office__type_mob">Офис</div>
+                  <div class="office__rating_mob">5.0 <svg width="13" height="13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.2 8.075a.688.688 0 00-.2.606l.556 3.075a.675.675 0 01-.282.675.688.688 0 01-.731.05l-2.768-1.443a.706.706 0 00-.313-.082h-.169a.507.507 0 00-.169.056l-2.768 1.45a.73.73 0 01-.444.07.695.695 0 01-.556-.795l.556-3.075a.7.7 0 00-.2-.612L.456 5.863a.675.675 0 01-.169-.707.702.702 0 01.556-.468l3.106-.451a.695.695 0 00.55-.38L5.87 1.05a.65.65 0 01.124-.169L6.05.838a.42.42 0 01.1-.082l.069-.025.106-.043h.263a.7.7 0 01.55.375l1.387 2.793a.69.69 0 00.519.38l3.106.452a.708.708 0 01.569.468.679.679 0 01-.181.707L10.2 8.075z" fill="#ED4040"/></svg></div>
+                  <div class="office__description--parameters_mob">
+                    <div class="office__places">80 мест</div>
+                    <div class="office__square mob">355 м<sup>2</sup></div>
+                  </div>
+                </div>
+                <div class="office__slider">
+                  <div class="slider-wrap">
+                    <div class="like_mob"><svg width="18" height="17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.534 4.055L9 5.261l.466-1.206c.593-1.53 2.277-2.68 4.034-2.68 2.269 0 4 1.71 4 4 0 1.57-.839 3.015-2.42 4.773-.93 1.036-2.071 2.132-3.386 3.395-.831.799-1.732 1.664-2.694 2.624-.962-.96-1.863-1.825-2.694-2.624-1.315-1.263-2.455-2.359-3.387-3.395C1.34 8.39.5 6.946.5 5.375c0-2.29 1.731-4 4-4 1.755 0 3.441 1.15 4.034 2.68z" stroke="#ED4040"/></svg></div>
+                    <div class="slider">
+                      <img src="img/office-photo-search.jpg" alt="фото офиса">
+                      <img src="img/office-photo-search.jpg" alt="фото офиса">
+                      <img src="img/office-photo-search.jpg" alt="фото офиса">
+                    </div>
+                  </div>
+                </div>
+                <div class="office__description">
+                  <div class="office__description--child">
+                    <div class="office__title">Офис на Орловской</div>
+                    <div class="like-button"><svg width="18" height="17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.534 4.055L9 5.261l.466-1.206c.593-1.53 2.277-2.68 4.034-2.68 2.269 0 4 1.71 4 4 0 1.57-.839 3.015-2.42 4.773-.93 1.036-2.071 2.132-3.386 3.395-.831.799-1.732 1.664-2.694 2.624-.962-.96-1.863-1.825-2.694-2.624-1.315-1.263-2.455-2.359-3.387-3.395C1.34 8.39.5 6.946.5 5.375c0-2.29 1.731-4 4-4 1.755 0 3.441 1.15 4.034 2.68z" stroke="#ED4040"/></svg></div>
+                    <div class="rating">
+                      5.0 <svg width="13" height="13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.2 8.075a.688.688 0 00-.2.606l.556 3.075a.675.675 0 01-.282.675.688.688 0 01-.731.05l-2.768-1.443a.706.706 0 00-.313-.082h-.169a.507.507 0 00-.169.056l-2.768 1.45a.73.73 0 01-.444.07.695.695 0 01-.556-.795l.556-3.075a.7.7 0 00-.2-.612L.456 5.863a.675.675 0 01-.169-.707.702.702 0 01.556-.468l3.106-.451a.695.695 0 00.55-.38L5.87 1.05a.65.65 0 01.124-.169L6.05.838a.42.42 0 01.1-.082l.069-.025.106-.043h.263a.7.7 0 01.55.375l1.387 2.793a.69.69 0 00.519.38l3.106.452a.708.708 0 01.569.468.679.679 0 01-.181.707L10.2 8.075z" fill="#ED4040"/></svg>
+                    </div>
+                  </div>
+                  <div class="office__type">Офис</div>
+                  <div class="office__features">
+                    <div class="office-feature">Высокоскоростной WiFi</div>
+                    <div class="office-feature">Открыто круглосуточно</div>
+                    <div class="office-feature">Встреча гостей/секретарь</div>
+                    <div class="office-feature">Кофемашина</div>
+                  </div>
+                  <div class="office__description--parameters">
+                    <div class="office__places">80 мест</div>
+                    <div class="office__square">355 м<sup>2</sup></div>
+                    <div class="office__price">1 300 ₽/сут</div>
+                  </div>
+                </div>
+              </div>
+              <div class="office">
+                <div class="office__slider">
+                  <div class="office__description_name-price">
+                    <div class="office__title_mob">Офис на Орловской</div>
+                    <div class="office__price_mob">1 300 ₽/сут</div>
+                  </div>
+                  <div class="office__description_type-square">
+                    <div class="office__type_mob">Офис</div>
+                    <div class="office__rating_mob">5.0 <svg width="13" height="13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.2 8.075a.688.688 0 00-.2.606l.556 3.075a.675.675 0 01-.282.675.688.688 0 01-.731.05l-2.768-1.443a.706.706 0 00-.313-.082h-.169a.507.507 0 00-.169.056l-2.768 1.45a.73.73 0 01-.444.07.695.695 0 01-.556-.795l.556-3.075a.7.7 0 00-.2-.612L.456 5.863a.675.675 0 01-.169-.707.702.702 0 01.556-.468l3.106-.451a.695.695 0 00.55-.38L5.87 1.05a.65.65 0 01.124-.169L6.05.838a.42.42 0 01.1-.082l.069-.025.106-.043h.263a.7.7 0 01.55.375l1.387 2.793a.69.69 0 00.519.38l3.106.452a.708.708 0 01.569.468.679.679 0 01-.181.707L10.2 8.075z" fill="#ED4040"/></svg></div>
+                    <div class="office__description--parameters_mob">
+                      <div class="office__places">80 мест</div>
+                      <div class="office__square mob">355 м<sup>2</sup></div>
+                    </div>
+                  </div>
+                  <div class="slider-wrap">
+                    <div class="like_mob"><svg width="18" height="17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.534 4.055L9 5.261l.466-1.206c.593-1.53 2.277-2.68 4.034-2.68 2.269 0 4 1.71 4 4 0 1.57-.839 3.015-2.42 4.773-.93 1.036-2.071 2.132-3.386 3.395-.831.799-1.732 1.664-2.694 2.624-.962-.96-1.863-1.825-2.694-2.624-1.315-1.263-2.455-2.359-3.387-3.395C1.34 8.39.5 6.946.5 5.375c0-2.29 1.731-4 4-4 1.755 0 3.441 1.15 4.034 2.68z" stroke="#ED4040"/></svg></div>
+                    <div class="slider">
+                      <img src="img/office-photo-search.jpg" alt="фото офиса">
+                      <img src="img/office-photo-search.jpg" alt="фото офиса">
+                      <img src="img/office-photo-search.jpg" alt="фото офиса">
+                    </div>
+                  </div>
+                </div>
+                <div class="office__description">
+                  <div class="office__description--child">
+                    <div class="office__title">Офис на Орловской</div>
+                    <div class="like-button"><svg width="18" height="17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.534 4.055L9 5.261l.466-1.206c.593-1.53 2.277-2.68 4.034-2.68 2.269 0 4 1.71 4 4 0 1.57-.839 3.015-2.42 4.773-.93 1.036-2.071 2.132-3.386 3.395-.831.799-1.732 1.664-2.694 2.624-.962-.96-1.863-1.825-2.694-2.624-1.315-1.263-2.455-2.359-3.387-3.395C1.34 8.39.5 6.946.5 5.375c0-2.29 1.731-4 4-4 1.755 0 3.441 1.15 4.034 2.68z" stroke="#ED4040"/></svg></div>
+                    <div class="rating">
+                      5.0 <svg width="13" height="13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10.2 8.075a.688.688 0 00-.2.606l.556 3.075a.675.675 0 01-.282.675.688.688 0 01-.731.05l-2.768-1.443a.706.706 0 00-.313-.082h-.169a.507.507 0 00-.169.056l-2.768 1.45a.73.73 0 01-.444.07.695.695 0 01-.556-.795l.556-3.075a.7.7 0 00-.2-.612L.456 5.863a.675.675 0 01-.169-.707.702.702 0 01.556-.468l3.106-.451a.695.695 0 00.55-.38L5.87 1.05a.65.65 0 01.124-.169L6.05.838a.42.42 0 01.1-.082l.069-.025.106-.043h.263a.7.7 0 01.55.375l1.387 2.793a.69.69 0 00.519.38l3.106.452a.708.708 0 01.569.468.679.679 0 01-.181.707L10.2 8.075z" fill="#ED4040"/></svg>
+                    </div>
+                  </div>
+                  <div class="office__type">Офис</div>
+                  <div class="office__features">
+                    <div class="office-feature">Высокоскоростной WiFi</div>
+                    <div class="office-feature">Открыто круглосуточно</div>
+                    <div class="office-feature">Встреча гостей/секретарь</div>
+                    <div class="office-feature">Кофемашина</div>
+                  </div>
+                  <div class="office__description--parameters">
+                    <div class="office__places">80 мест</div>
+                    <div class="office__square">355 м<sup>2</sup></div>
+                    <div class="office__price">1 300 ₽/сут</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="map-block" style="background-image:url('img/map.jpg');background-size:cover;background-position:center;">
+            <div class="top-map-buttons">
+              <div class="fullscreen-map" data-da=".page,1439,1">
+                <svg width="23" height="19" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M21.75 10.955h-21a.75.75 0 010-1.5h21a.75.75 0 010 1.5zm-1.87-4.21a.75.75 0 01-.75-.75V4.481A2.986 2.986 0 0016.147 1.5h-1.205a.75.75 0 010-1.5h1.205a4.488 4.488 0 014.483 4.481v1.514a.75.75 0 01-.75.75zm-17.26 0a.75.75 0 01-.75-.75V4.481A4.488 4.488 0 016.353 0H7.59a.75.75 0 010 1.5H6.353A2.986 2.986 0 003.37 4.481v1.514a.75.75 0 01-.75.75z" fill="#ED4040"/><path fill-rule="evenodd" clip-rule="evenodd" d="M16.147 18.76h-1.205a.75.75 0 010-1.5h1.205a2.986 2.986 0 002.983-2.981v-4.075a.75.75 0 011.5 0v4.075a4.488 4.488 0 01-4.483 4.482zm-8.557 0H6.352a4.488 4.488 0 01-4.482-4.48v-4.075a.75.75 0 011.5 0v4.075a2.986 2.986 0 002.983 2.982H7.59a.75.75 0 010 1.5z" fill="#ED4040"/></svg>
+                <span class="fullscreen-map__text">Развернуть карту</span>
+              </div>
+              <div class="nav__filters--map">
+                <svg width="20" height="20" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M6.773 9.599c.018.016.035.03.052.049A5.874 5.874 0 018.5 13.774v3.984l2.236-1.218a.556.556 0 00.286-.491v-2.287c0-1.55.588-3.01 1.657-4.11l4.837-5.144A1.79 1.79 0 0018 3.277V2.34c0-.464-.366-.841-.814-.841H2.316a.83.83 0 00-.816.84v.937c0 .46.172.898.485 1.23l4.788 5.092zM8.146 19.5A1.146 1.146 0 017 18.346v-4.572a4.383 4.383 0 00-1.194-3.023.645.645 0 01-.066-.062L.893 5.536A3.284 3.284 0 010 3.276v-.935C0 1.05 1.04 0 2.315 0h14.871C18.462 0 19.5 1.05 19.5 2.34v.937c0 .843-.317 1.645-.89 2.258l-4.848 5.154a4.384 4.384 0 00-1.242 3.073v2.287c0 .756-.409 1.448-1.066 1.808L8.691 19.36c-.172.093-.359.14-.546.14z" fill="#ED4040"/></svg> &nbsp;&nbsp;Фильтры
+              </div>
+              <div class="search-moving">
+                <label class="checkbox-label">
+                  <input type="checkbox" class="real-checkbox">
+                  <span class="fake-checkbox"></span>
+                  <span class="checkbox-text">Поиск при перемещении карты</span>
+                </label>
+              </div>
+              <div class="zoom">
+                <div class="zoom__button">+</div>
+                <div class="zoom__button">–</div>
+              </div>
+            </div>
+            <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d164153.52370274908!2d36.145400433747824!3d49.99450661396092!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4127a09f63ab0f8b%3A0x2d4c18681aa4be0a!2z0KXQsNGA0YzQutC-0LIsINCl0LDRgNGM0LrQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0Yw!5e0!3m2!1sru!2sua!4v1634559280329!5m2!1sru!2sua" style="border:0; width: 100%; height: 100%;" allowfullscreen="" loading="lazy"></iframe> -->
+          </div>
+        </div>
+      </div>
+    </header>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__block">
+          <a href="#" class="logo"><img src="img/logo.png" alt=""></a>
+          <div class="social">
+            <a href="#" class="social__link"><?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg height="512px" style="enable-background:new 0 0 512 512;" version="1.1" viewBox="0 0 512 512" width="512px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g id="comp_x5F_335-telegram"><g><path d="M484.689,98.231l-69.417,327.37c-5.237,23.105-18.895,28.854-38.304,17.972L271.2,365.631l-51.034,49.086    c-5.647,5.647-10.372,10.372-21.256,10.372l7.598-107.722L402.539,140.23c8.523-7.598-1.848-11.809-13.247-4.21L146.95,288.614    L42.619,255.96c-22.694-7.086-23.104-22.695,4.723-33.579L455.423,65.166C474.316,58.081,490.85,69.375,484.689,98.231z"/></g></g><g id="Layer_1"/></svg></a>
+            <a href="#" class="social__link"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.997 3.985h2.191V.169C17.81.117 16.51 0 14.996 0c-3.159 0-5.323 1.987-5.323 5.639V9H6.187v4.266h3.486V24h4.274V13.267h3.345l.531-4.266h-3.877V6.062c.001-1.233.333-2.077 2.051-2.077z"/></svg></a>
+            <a href="#" class="social__link"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 511.962 511.962"><path d="M507.399 370.471c-1.376-2.304-9.888-20.8-50.848-58.816-42.88-39.808-37.12-33.344 14.528-102.176 31.456-41.92 44.032-67.52 40.096-78.464-3.744-10.432-26.88-7.68-26.88-7.68l-76.928.448s-5.696-.768-9.952 1.76c-4.128 2.496-6.784 8.256-6.784 8.256s-12.192 32.448-28.448 60.032c-34.272 58.208-48 61.28-53.6 57.664-13.024-8.416-9.76-33.856-9.76-51.904 0-56.416 8.544-79.936-16.672-86.016-8.384-2.016-14.528-3.36-35.936-3.584-27.456-.288-50.72.096-63.872 6.528-8.768 4.288-15.52 13.856-11.392 14.4 5.088.672 16.608 3.104 22.72 11.424 7.904 10.72 7.616 34.848 7.616 34.848s4.544 66.4-10.592 74.656c-10.4 5.664-24.64-5.888-55.2-58.72-15.648-27.04-27.488-56.96-27.488-56.96s-2.272-5.568-6.336-8.544c-4.928-3.616-11.84-4.768-11.84-4.768l-73.152.448s-10.976.32-15.008 5.088c-3.584 4.256-.288 13.024-.288 13.024s57.28 133.984 122.112 201.536c59.488 61.92 127.008 57.856 127.008 57.856h30.592s9.248-1.024 13.952-6.112c4.352-4.672 4.192-13.44 4.192-13.44s-.608-41.056 18.464-47.104c18.784-5.952 42.912 39.68 68.48 57.248 19.328 13.28 34.016 10.368 34.016 10.368l68.384-.96s35.776-2.208 18.816-30.336z"/></svg></a>
+            <a href="#" class="social__link"><svg viewBox="0 0 511 511.9" xmlns="http://www.w3.org/2000/svg"><path d="M510.95 150.5c-1.2-27.2-5.598-45.898-11.9-62.102-6.5-17.199-16.5-32.597-29.6-45.398-12.802-13-28.302-23.102-45.302-29.5-16.296-6.3-34.898-10.7-62.097-11.898C334.648.3 325.949 0 256.449 0s-78.199.3-105.5 1.5c-27.199 1.2-45.898 5.602-62.097 11.898-17.204 6.5-32.602 16.5-45.403 29.602-13 12.8-23.097 28.3-29.5 45.3-6.3 16.302-10.699 34.9-11.898 62.098C.75 177.801.449 186.5.449 256s.301 78.2 1.5 105.5c1.2 27.2 5.602 45.898 11.903 62.102 6.5 17.199 16.597 32.597 29.597 45.398 12.801 13 28.301 23.102 45.301 29.5 16.3 6.3 34.898 10.7 62.102 11.898 27.296 1.204 36 1.5 105.5 1.5s78.199-.296 105.5-1.5c27.199-1.199 45.898-5.597 62.097-11.898a130.934 130.934 0 0074.903-74.898c6.296-16.301 10.699-34.903 11.898-62.102 1.2-27.3 1.5-36 1.5-105.5s-.102-78.2-1.3-105.5zm-46.098 209c-1.102 25-5.301 38.5-8.801 47.5-8.602 22.3-26.301 40-48.602 48.602-9 3.5-22.597 7.699-47.5 8.796-27 1.204-35.097 1.5-103.398 1.5s-76.5-.296-103.403-1.5c-25-1.097-38.5-5.296-47.5-8.796C94.551 451.5 84.45 445 76.25 436.5c-8.5-8.3-15-18.3-19.102-29.398-3.5-9-7.699-22.602-8.796-47.5-1.204-27-1.5-35.102-1.5-103.403s.296-76.5 1.5-103.398c1.097-25 5.296-38.5 8.796-47.5C61.25 94.199 67.75 84.1 76.352 75.898c8.296-8.5 18.296-15 29.398-19.097 9-3.5 22.602-7.7 47.5-8.801 27-1.2 35.102-1.5 103.398-1.5 68.403 0 76.5.3 103.403 1.5 25 1.102 38.5 5.3 47.5 8.8 11.097 4.098 21.199 10.598 29.398 19.098 8.5 8.301 15 18.301 19.102 29.403 3.5 9 7.699 22.597 8.8 47.5 1.2 27 1.5 35.097 1.5 103.398s-.3 76.301-1.5 103.301zm0 0"/><path d="M256.45 124.5c-72.598 0-131.5 58.898-131.5 131.5s58.902 131.5 131.5 131.5c72.6 0 131.5-58.898 131.5-131.5s-58.9-131.5-131.5-131.5zm0 216.8c-47.098 0-85.302-38.198-85.302-85.3s38.204-85.3 85.301-85.3c47.102 0 85.301 38.198 85.301 85.3s-38.2 85.3-85.3 85.3zm167.402-222c0 16.954-13.747 30.7-30.704 30.7-16.953 0-30.699-13.746-30.699-30.7 0-16.956 13.746-30.698 30.7-30.698 16.956 0 30.703 13.742 30.703 30.699zm0 0"/></svg></a>
+          </div>
+          <div class="menu-columns">
+            <div class="column">
+              <div class="column__title">Сообщество</div>
+              <a href="#" class="column__link">Реферальная программа</a>
+            </div>
+            <div class="column">
+              <div class="column__title">Компания</div>
+              <a href="#" class="column__link">О сервисе</a>
+            </div>
+            <div class="column">
+              <div class="column__title">Помощь</div>
+              <a href="#" class="column__link">Свяжитесь с нами</a>
+            </div>
+            <div class="column">
+              <div class="column__title">Аренда</div>
+            </div>
+          </div>
+        </div>
+        <div class="footer__bottom">
+          <div class="copyright">
+            © 2021 Getdesk.
+          </div>
+          <div class="terms">
+            <a href="#" class="terms__link">Конфиденциальность</a>
+            <a href="#" class="terms__link">Условия использования</a>
+            <a href="#" class="terms__link">Реквизиты компании</a>
+          </div>
+          <select name="money-list" class="visually-hidden">
+            <option value="rub" data-option="RUB">rub</option>
+            <option value="usd" data-option="USD">usd</option>
+            <option value="eur" data-option="EUR">eur</option>
+          </select>
+          <div class="money-list select">
+            <svg width="44" height="44" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="22" fill="#F74D4A"/><path d="M24.84 26.317a.416.416 0 00-.32-.15h-5.04a.416.416 0 00-.41.492C19.667 29.904 20.818 32 22 32c1.18 0 2.33-2.096 2.93-5.341a.417.417 0 00-.09-.342zm6.685-7.361a.416.416 0 00-.397-.29h-4.692a.416.416 0 00-.414.46 28.777 28.777 0 010 5.75.416.416 0 00.414.457h4.692a.416.416 0 00.397-.29 9.992 9.992 0 000-6.087zm-5.725-1.47c.034.2.208.347.411.347h4.206a.418.418 0 00.366-.616 10.083 10.083 0 00-5.897-4.79.417.417 0 00-.484.602c.607 1.088 1.09 2.63 1.398 4.457zm-1.037 1.181h-5.525a.417.417 0 00-.414.372A27.745 27.745 0 0018.667 22c0 1.003.053 2 .157 2.962a.417.417 0 00.414.371h5.525c.213 0 .391-.16.414-.371.104-.962.157-1.959.157-2.962 0-1.003-.053-2-.157-2.961a.417.417 0 00-.414-.372zm-11.18-.834h4.205a.417.417 0 00.411-.347c.308-1.828.791-3.369 1.398-4.457a.417.417 0 00-.484-.602 10.083 10.083 0 00-5.896 4.79.417.417 0 00.366.616zm4.29 7.363a.416.416 0 00.106-.321A28.779 28.779 0 0117.833 22c0-.95.05-1.918.146-2.875a.416.416 0 00-.415-.458h-4.692a.416.416 0 00-.397.29 9.99 9.99 0 000 6.087c.055.172.216.29.397.29h4.692c.118 0 .23-.05.309-.138zm.327 1.318a.417.417 0 00-.412-.347h-4.205a.418.418 0 00-.366.616 10.082 10.082 0 005.896 4.79.418.418 0 00.484-.602c-.607-1.088-1.09-2.629-1.398-4.457zm12.217-.347H26.21a.417.417 0 00-.41.347c-.308 1.828-.792 3.369-1.399 4.457a.417.417 0 00.484.602 10.082 10.082 0 005.897-4.79.417.417 0 00-.366-.616zM19.16 17.683c.079.095.196.15.32.15h5.04a.416.416 0 00.41-.492C24.333 14.096 23.182 12 22 12c-1.18 0-2.33 2.096-2.93 5.341a.416.416 0 00.09.342z" fill="#fff"/></svg>
+            <svg width="16" height="10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 1.5l-7 7-7-7" stroke="#717171" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div class="select-value">RUB</div>
+            <div class="select-items">
+              <div class="option">RUB</div>
+              <div class="option">USD</div>
+              <div class="option">EUR</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <div class="filters__popups">
+    <div class="filters__popup popup-char">
+      <div class="popup-char-window">
+        <div class="char__title">Укажите нужные вам характеристики офиса.</div>
+        <div class="char__descr">В результатах будут показаны офисы, в которых есть все что вы отметили.</div>
+        <form action="#" class="char__form">
+          <div class="char__group">
+            <div class="char__wrap">
+              <div class="char__name">Рабочие места</div>
+              <div class="char__input-wrap">
+                <div class="decrease char__button">–</div>
+                <input type="number" class="char__input" min="0" value="0">
+                <div class="increase char__button">+</div>
+              </div>
+            </div>
+          </div>
+          <div class="char__group">
+            <div class="char__wrap">
+              <div class="char__name">Закрытые кабинеты</div>
+              <div class="char__input-wrap">
+                <div class="decrease char__button">–</div>
+                <input type="number" class="char__input" min="0" value="0">
+                <div class="increase char__button">+</div>
+              </div>
+            </div>
+            <div class="char__wrap">
+              <div class="char__name">Сколько нужно мест</div>
+              <div class="char__input-wrap">
+                <div class="decrease char__button">–</div>
+                <input type="number" class="char__input" min="0" value="0">
+                <div class="increase char__button">+</div>
+              </div>
+            </div>
+          </div>
+          <div class="char__group">
+            <div class="char__wrap">
+              <div class="char__name">Переговорные комнаты</div>
+              <div class="char__input-wrap">
+                <div class="decrease char__button">–</div>
+                <input type="number" class="char__input" min="0" value="0">
+                <div class="increase char__button">+</div>
+              </div>
+            </div>
+            <div class="char__wrap">
+              <div class="char__name">Сколько нужно мест</div>
+              <div class="char__input-wrap">
+                <div class="decrease char__button">–</div>
+                <input type="number" class="char__input" min="0" value="0">
+                <div class="increase char__button">+</div>
+              </div>
+            </div>
+          </div>
+          <div class="char__group">
+            <div class="char__wrap">
+              <div class="char__name">Рабочие места</div>
+              <div class="char__input-wrap">
+                <div class="decrease char__button">–</div>
+                <input type="number" class="char__input" min="0" value="0">
+                <div class="increase char__button">+</div>
+              </div>
+            </div>
+            <div class="char__wrap">
+              <div class="char__name">Конференц-залы</div>
+              <div class="char__input-wrap">
+                <div class="decrease char__button">–</div>
+                <input type="number" class="char__input" min="0" value="0">
+                <div class="increase char__button">+</div>
+              </div>
+            </div>
+          </div>
+          <div class="apply-buttons">
+            <button class="clear clear-char"><img class="cross-img" src="img/cross.png" alt=""> Очистить</button>
+            <button type="submit" class="apply__button close-popup">Применить</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="filters__popup popup-price">
+      <div class="popup-price-window">
+        <div class="price__slider"></div>
+        <div class="price__range">
+          <div class="price__wrap"><input value="0" type="number" class="price__number price_min"></div>
+          <div class="price__wrap"><input value="1000000" type="number" class="price__number price_max"></div>
+        </div>
+        <div class="apply-buttons">
+          <button class="clear clear-price"><img class="cross-img" src="img/cross.png" alt=""> Очистить</button>
+          <button type="submit" class="apply__button close-popup">Применить</button>
+        </div>
+      </div>
+    </div>
+    <div class="filters__popup popup-comfort">
+      <div class="popup-comfort-window">
+        <form action="#">
+          <div class="comfort-title">Общие удобства</div>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" class="real-checkbox">
+              <span class="fake-checkbox"></span>
+              <span class="checkbox-text">Высокоскоросной WiFi</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="real-checkbox">
+              <span class="fake-checkbox"></span>
+              <span class="checkbox-text">Кофемашина</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="real-checkbox">
+              <span class="fake-checkbox"></span>
+              <span class="checkbox-text">Открыто круглосуточно</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="real-checkbox">
+              <span class="fake-checkbox"></span>
+              <span class="checkbox-text">Флипчарт</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="real-checkbox">
+              <span class="fake-checkbox"></span>
+              <span class="checkbox-text">Встреча гостей/секретарь</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="real-checkbox">
+              <span class="fake-checkbox"></span>
+              <span class="checkbox-text">Канцелярские принадлежности</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="real-checkbox">
+              <span class="fake-checkbox"></span>
+              <span class="checkbox-text">Диваны</span>
+            </label>
+          </div>
+          <div class="comfort-title">Удобства переговорных комнат</div>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" class="real-checkbox">
+              <span class="fake-checkbox"></span>
+              <span class="checkbox-text">Оборудование для видеоконференции</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="real-checkbox">
+              <span class="fake-checkbox"></span>
+              <span class="checkbox-text">Проектор</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="real-checkbox">
+              <span class="fake-checkbox"></span>
+              <span class="checkbox-text">TV</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="real-checkbox">
+              <span class="fake-checkbox"></span>
+              <span class="checkbox-text">Apple TV</span>
+            </label>
+          </div>
+          <div class="comfort-title">Оборудование</div>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" class="real-checkbox">
+              <span class="fake-checkbox"></span>
+              <span class="checkbox-text">Есть ПК</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="real-checkbox">
+              <span class="fake-checkbox"></span>
+              <span class="checkbox-text">Принтер</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="real-checkbox">
+              <span class="fake-checkbox"></span>
+              <span class="checkbox-text">Микрофон</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="real-checkbox">
+              <span class="fake-checkbox"></span>
+              <span class="checkbox-text">Сканер</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="real-checkbox">
+              <span class="fake-checkbox"></span>
+              <span class="checkbox-text">Профессиональное световое оборудование</span>
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="real-checkbox">
+              <span class="fake-checkbox"></span>
+              <span class="checkbox-text">Фотокопировальный аппарат</span>
+            </label>
+          </div>
+          <button class="show-more">
+            Показать все <svg width="16" height="10" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 1.5l-7 7-7-7" stroke="#717171" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="apply-buttons">
+            <button class="clear clear-comfort"><img class="cross-img" src="img/cross.png" alt=""> Очистить</button>
+            <button type="submit" class="apply__button close-popup">Применить</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="filters__popup popup-booking">
+      <div class="popup-booking-window">
+        <div class="booking__title">Мгновенное бронирование</div>
+        <div class="booking__wrap">
+          <div class="booking__descr">Показать только те пространства, где доступно бронирование без подтверждения</div>
+          <label class="wrap-checkbox">
+            <input type="checkbox" class="real-checkbox">
+            <span class="wrap-checkbox-track">
+              <span class="wrap-checkbox-thumb"></span>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script async src="js/main.js"></script>
+</body>
+
+</html>
