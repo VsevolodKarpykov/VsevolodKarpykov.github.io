@@ -1,0 +1,289 @@
+*,
+::after,
+::before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    background-repeat: no-repeat
+}
+
+html {
+    font-family: sans-serif
+}
+
+body {
+    word-wrap: break-word;
+    line-height: 1.5;
+    overflow-x: hidden
+}
+
+ol,
+ul {
+    list-style: none
+}
+
+img {
+    max-width: 100%;
+    display: block
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+    background-color: transparent
+}
+
+input::-ms-clear {
+    display: none
+}
+
+button:-moz-focus-inner {
+    border: 0
+}
+
+select {
+    -moz-appearance: none;
+    -webkit-appearance: none
+}
+
+select::-ms-expand {
+    display: none
+}
+
+input:not([autofocus]):focus::placeholder,
+textarea:not([autofocus]):focus::placeholder {
+    color: transparent
+}
+
+body,
+html {
+    scrollbar-color: #1d1729 #fff;
+    scrollbar-width: none;
+    scrollbar-track-color: #fff;
+    scrollbar-base-color: #1d1729;
+    scrollbar-arrow-color: #fff
+}
+
+body::-webkit-scrollbar,
+html::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+    background-color: #fff
+}
+
+body::-webkit-scrollbar-thumb,
+html::-webkit-scrollbar-thumb {
+    background-color: #1d1729
+}
+
+.container {
+    max-width: 1420px;
+    padding: 0 10px;
+    margin: 0 auto
+}
+
+body {
+    background-color: #14092f;
+    min-height: 100vh
+}
+
+.bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-image: url(../img/fon2.jpg);
+    background-size: cover;
+    background-position: center
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-items: center;
+    grid-gap: 15px;
+    padding-bottom: 15px;
+}
+
+figure {
+    flex-basis: 32%;
+    background-color: rgba(159, 89, 220, .05);
+    backdrop-filter: blur(50px);
+    border-radius: 20px;
+    position: relative;
+    padding: 20px 20px 0;
+    box-shadow: 0px 0px 35px -2px rgba(0,0,0,0.75)
+}
+
+figure img{
+  height: 250px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 20px;
+}
+
+figcaption {
+    padding: 10px
+}
+
+figure a {
+    border-radius: 20px;
+}
+
+figure:hover .link {
+  background-image: linear-gradient(to top, #fff5, #fff5);
+}
+
+.site-name {
+    font-size: 18px;
+    color: rgba(255, 255, 255, .867);
+    letter-spacing: 1px;
+    font-style: italic
+}
+
+.price {
+    text-align: right;
+    color: #2dbcf4;
+    letter-spacing: 1px;
+    font-family: 'Kanit', sans-serif
+}
+
+.h1 {
+    font-size: 40px;
+    padding-top: 50px;
+    margin-bottom: 20px
+}
+
+.nd span,
+p {
+    font-size: 18px
+}
+
+.h1,
+p {
+    color: #fff;
+    text-align: center;
+    font-family: 'Exo 2', sans-serif
+}
+
+p {
+    margin-bottom: 40px
+}
+
+.block,
+.nd {
+    display: flex
+}
+
+.block {
+    align-items: center;
+    position: relative;
+    transition: filter .3s
+}
+
+.block+.block {
+    margin-top: 40px
+}
+
+.block:hover {
+    filter: brightness(1.35)
+}
+
+.nd {
+    flex-direction: column;
+    max-width: 400px;
+    color: #fff;
+    margin: 0 auto;
+    padding-bottom: 40px
+}
+
+.nd span {
+    margin-left: 20px;
+    color: #fff;
+    letter-spacing: 1px;
+    font-style: italic
+}
+
+.nd img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 20px;
+}
+
+.eye {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 40px;
+    display: none;
+    pointer-events: none;
+    filter: invert(0)
+}
+
+.progress-bar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  background-image: linear-gradient(to right, #ab1685 0%, #2dbcf4 100%);
+  display: flex;
+  justify-content: flex-end;
+}
+
+::selection{
+  background-color: #ab1685;
+}
+
+.progress{
+  height: 4px;
+  background-color: #000;
+  width: 100%;
+}
+
+@media (max-width:1025px) {
+    .wrapper {
+        grid-template-columns: 1fr 1fr
+    }
+
+    figure {
+        flex-basis: 48%
+    }
+}
+
+@media (max-width:599px) {
+    figure {
+        flex-basis: 400px;
+        max-width: 95%;
+        width: 100%
+    }
+    figure img{
+        width: 100%;
+        height: 190px
+    }
+    .wrapper {
+        grid-template-columns: 1fr
+    }
+    .bg{
+      background-position: left, center
+    }
+}
