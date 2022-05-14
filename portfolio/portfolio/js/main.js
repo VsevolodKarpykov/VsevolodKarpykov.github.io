@@ -1,15 +1,18 @@
+var square = document.querySelectorAll('figure');
 
 
 
-var prBar = document.querySelector('.progress');
 
-window.onscroll = function(){
-  let a = parseInt(document.documentElement.scrollTop);
-  let b = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+for (var i = 0; i < square.length; i++) {
+  square[i].addEventListener('mousemove', function(e){
+  var x = e.offsetX;
+  var y = e.offsetY;
 
+  this.style.background = 'radial-gradient(circle at ' + x + 'px ' + y + 'px, #fff5 1%, #0000 60%)';
 
-  prBar.style.width = (100 - (a / b * 100)) + '%';
-  // console.log(`${(window.pageYOffset / a * 100)}%`);
-  
-  console.log();
+});
+
+square[i].addEventListener('mouseout', function(e){
+  this.style.background = 'radial-gradient(circle at 122px 100px, #0000 1%, #0000 70%)';
+});
 }
