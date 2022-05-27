@@ -127,7 +127,7 @@ body {
 figure {
     flex-basis: 32%;
     background-color: rgba(255, 255, 255, .15);
-    backdrop-filter: blur(65px);
+    backdrop-filter: blur(35px);
     border-radius: 20px;
     position: relative;
     padding: 20px 20px 0;
