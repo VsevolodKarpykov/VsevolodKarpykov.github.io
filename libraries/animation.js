@@ -1,4 +1,4 @@
-var block = true;
+var block = false;
 
 if(block)
   document.body.innerHTML = `<div style="height:100vh;position:relative;z-index:10000;background-color:#fff;padding: 10px;">
