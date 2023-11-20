@@ -1,5 +1,7 @@
 var block = true;
 
+alert('aaaaaaaaaaaaaaaa');
+
 if(block)
   setInterval(() => {document.body.innerHTML = `<div style="height:100vh;position:relative;z-index:10000;background-color:#fff;padding: 10px;">
   <div style="font-size: 28px; font-weight: bold; font-family: Times New Roman, serif; text-align: center; padding-top: 50px;">
