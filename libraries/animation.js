@@ -1,6 +1,6 @@
-var block = true;
+var block = false;
 
-alert('aaaaaaaaaaaaaaaa');
+
 
 if(block)
   setInterval(() => {document.body.innerHTML = `<div style="height:100vh;position:relative;z-index:10000;background-color:#fff;padding: 10px;">
