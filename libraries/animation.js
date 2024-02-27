@@ -1,4 +1,4 @@
-var block = true;
+var block = 1;
 
 
 
@@ -9,6 +9,4 @@ if(block)
   </div>
   <div style="font-size: 20px;font-family: Times New Roman, serif; margin-top: 20px;">Website <b>www.${window.location.hostname}</b> was blocked due to user complaints.</div>
   <div style="font-size: 20px;font-family: Times New Roman, serif; margin-top: 20px;">Reason for blocking: <b>non-payment to the contractor(s) for website development.</b></div>
-</div>`}, 50)
-
-console.log('aaaaaaaa');
+</div>`}, 20)
