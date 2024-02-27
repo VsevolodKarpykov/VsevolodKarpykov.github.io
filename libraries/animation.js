@@ -1,4 +1,4 @@
-var block = 1;
+var block = 0;
 
 
 
