@@ -250,7 +250,7 @@
         </div>
         <div class="content-body">
           <h1>Vsevolod Karpykov</h1>
-          <p>24 y.o. Web Developer</p>
+          <p><span id="old"></span> y.o. Web Developer</p>
           <div class="links">
             <a href="https://www.facebook.com/vsevolod.karpykov">
               <div class="box">
@@ -308,7 +308,23 @@
     </div>
   </div>
   
+  <script>
+    var sqlDT = "2000-07-15 00:00:00";
+var BD = new Date( sqlDT.replace(' ','T'));
+var Now = new Date();
+BD.setMinutes( BD.getMinutes() + Now.getTimezoneOffset()); // в UTC
 
+if( BD.getMonth() === Now.getUTCMonth()
+  && BD.getDate() === Now.getUTCDate()
+) {
+  // ура! День рождения!
+  var y = Now.getUTCFullYear() - BD.getFullYear(); // сколько полных лет
+  document.querySelector('#old').textContent = y;
+} else {
+  var y = Now.getUTCFullYear() - BD.getFullYear() - 1;
+  document.querySelector('#old').textContent = y;
+}
+  </script>
   <script async src="js/main.js"></script>
 </body>
 </html>
