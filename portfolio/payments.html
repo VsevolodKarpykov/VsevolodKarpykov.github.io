@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="shortcut icon" type="image/ico" href="https://github.com/VsevolodKarpykov/VsevolodKarpykov.github.io/blob/master/visit-card/img/favicon.png?raw=true">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300;500&family=Kanit:wght@500&family=Montserrat+Alternates:wght@500&display=swap" rel="stylesheet">
+  <style>
+    *,
+::after,
+::before {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    background-repeat: no-repeat
+}
+
+html {
+    font-family: sans-serif
+}
+
+body {
+    word-wrap: break-word;
+    line-height: 1.5;
+    overflow-x: hidden
+}
+
+ol,
+ul {
+    list-style: none
+}
+
+img {
+    max-width: 100%;
+    display: block
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+    cursor: pointer;
+    border: 0;
+    outline: 0;
+    background-color: transparent
+}
+
+input::-ms-clear {
+    display: none
+}
+
+button:-moz-focus-inner {
+    border: 0
+}
+
+select {
+    -moz-appearance: none;
+    -webkit-appearance: none
+}
+
+select::-ms-expand {
+    display: none
+}
+
+input:not([autofocus]):focus::placeholder,
+textarea:not([autofocus]):focus::placeholder {
+    color: transparent
+}
+
+body,
+html {
+    scrollbar-color: #1d1729 #fff;
+    scrollbar-width: none;
+    scrollbar-track-color: #fff;
+    scrollbar-base-color: #1d1729;
+    scrollbar-arrow-color: #fff
+}
+
+body::-webkit-scrollbar,
+html::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+    background-color: #fff
+}
+
+body::-webkit-scrollbar-thumb,
+html::-webkit-scrollbar-thumb {
+    background-color: #1d1729
+}
+
+.container {
+    max-width: 1420px;
+    padding: 0 10px;
+    margin: 0 auto
+}
+
+body {
+    background-color: #14092f;
+    min-height: 100vh
+}
+
+.bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-image: linear-gradient(to top, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('https://vsevolodkarpykov.github.io/portfolio/portfolio_eng/img/milad-fakurian-iLHDO19h0ng-unsplash.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: invert(0.07) saturate(.8) hue-rotate(0deg);
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    place-items: center;
+    grid-gap: 15px;
+    padding-bottom: 15px;
+}
+
+figure {
+    flex-basis: 32%;
+    background-color: rgba(100, 100, 100, .15);
+    backdrop-filter: blur(35px);
+    border-radius: 20px;
+    position: relative;
+    padding: 20px 20px 0;
+    box-shadow: 0px 0px 35px -2px rgba(0,0,0,0.75)
+}
+
+figure img{
+  height: 250px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 20px;
+}
+
+figcaption {
+    padding: 10px
+}
+
+figure a {
+    border-radius: 20px;
+}
+
+
+
+.site-name {
+    font-size: 18px;
+    color: rgba(255, 255, 255, .867);
+    letter-spacing: 1px;
+    /*font-style: italic*/
+    font-family: 'Exo 2', sans-serif
+}
+
+.price {
+    text-align: right;
+    color: #2dbcf4;
+    letter-spacing: 1px;
+    font-family: 'Montserrat Alternates', sans-serif
+}
+
+.h1 {
+    font-size: 40px;
+    padding-top: 50px;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.nd span,
+p {
+    font-size: 18px;
+    letter-spacing: 1px;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.h1,
+p {
+    color: #fff;
+    text-align: center;
+    font-family: 'Exo 2', sans-serif
+}
+
+p {
+    margin-bottom: 40px
+}
+
+.block,
+.nd {
+    display: flex
+}
+
+.block {
+    align-items: center;
+    position: relative;
+    transition: filter .3s;
+    flex-direction: column;
+}
+
+
+
+.nd {
+    flex-direction: row;
+    color: #fff;
+    margin: 0 auto;
+    padding-bottom: 40px;
+    justify-content: center;
+    grid-gap: 30px;
+    flex-wrap: wrap;
+}
+
+.nd span {
+    color: #fff;
+    letter-spacing: 1px;
+    font-style: italic;
+    padding-top: 10px;
+}
+
+.nd img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+}
+
+.nd-wrap{
+    padding: 15px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, .15);
+    backdrop-filter: blur(65px);
+    box-shadow: 0px 0px 35px -2px rgba(0,0,0,0.75);
+    transition: background-color .3s;
+    position: relative;
+}
+
+.nd-wrap::before{
+    content: "";
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    bottom: 5%;
+    right: 5%;
+    border-radius: 10px;
+    opacity: 0;
+    filter: blur(20px);
+    transition: opacity .3s;
+    z-index: -1;
+    background-image: linear-gradient(45deg, #bd834f, #bd834f);
+}
+
+.block:hover .nd-wrap::before{
+    opacity: .9;
+}
+
+
+::selection{
+  background-color: #fff4;
+  color: #000;
+}
+
+
+@media (max-width:1025px) {
+    .wrapper {
+        grid-template-columns: 1fr 1fr
+    }
+
+    figure {
+        flex-basis: 48%
+    }
+}
+
+@media (max-width:599px) {
+    figure {
+        flex-basis: 400px;
+        max-width: 95%;
+        width: 100%
+    }
+    figure img{
+        width: 100%;
+        height: 190px
+    }
+    .wrapper {
+        grid-template-columns: 1fr
+    }
+    .bg{
+      background-position: left, center
+    }
+}
+
+.methods{
+  max-width: 520px;
+  margin: 0 auto;
+  color: #fffb;
+  background-color: #0007;
+  padding: 40px;
+  border-radius: 40px;
+  backdrop-filter: blur(10px);
+}
+.method{
+  font-weight: bold;
+}
+.method-value{
+  padding-left: 20px;
+  line-height: 2;
+}
+.copy-value {
+/*  font-style: italic;*/
+}
+.copy-value:hover{
+  cursor: pointer;
+  color: #fff;
+  position: relative;
+}
+.copy-value:hover::after{
+  content: 'Click to copy';
+  background-color: #000;
+  padding: 0px 4px;
+  border-radius: 5px;
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: no-wrap;
+  width: 90px;
+  font-size: 14px;
+}
+  </style>
+  <title>Payment methods</title>
+</head>
+
+<body>
+  <div class="page">
+    <div class="container">
+      <div class="h1">Payment methods</div>     
+      <div class="methods">
+        
+        <div class="method">Paypal / Skrill</div>
+        <div class="method-value">
+          <div class="copy-value">vsevolod.karpykov@gmail.com</div>
+        </div>
+
+        <div class="method">Paysera / SEPA (Euro) Bank transfer</div>
+        <div class="method-value">
+          Receiver: <span class="copy-value">Vsevolod Karpykov</span><br>
+          Account: <span class="copy-value">LT393500010017996905</span><br>
+          SWIFT: <span class="copy-value">EVIULT2VXXX</span><br>
+          Bank name: <span class="copy-value">Paysera LT, UAB</span><br>
+          Bank address: <span class="copy-value">Pilaitės pr. 16, Vilnius,
+                    LT-04352, Lithuania</span>
+        </div>
+
+
+        <div class="method">Crypto</div>
+        <div class="method-value">
+        BTC - <div class="copy-value">bc1q4mskzp5un83t9q8sp9y0qdrc4354j7lvzq28c9</div>
+        ETH (USDT ERC-20, USDC, AVAX) - <div class="copy-value">0x3deb09cce0483090c6346cbb8ef515d6402d4352</div>
+        LTC - <div class="copy-value">ltc1q4d83calhrsclzr4wsza2sd4f237ueet2x8w6fn</div>
+        TRX (USDT TRC-20) - <div class="copy-value">TNRqFD6a3d9UTC2G1XHccCKxv4EuNpGJbB</div>
+        BCH - <div class="copy-value">qrjjqt7pgy8ap9c3ry87paad64kpc8dvqgg62jt3yr</div>
+        DASH - <div class="copy-value">Xd7D9NXQg4hZcb8w3D6xH7yYiwaVu6S27v</div>
+        DOGE - <div class="copy-value">D8Ngc5Pm1WA2m9CzTmjasCrTznkKhJcTsm</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg"></div>
+  
+  <script>
+    let copies = document.querySelectorAll('.copy-value')
+    for (var i = 0; i < copies.length; i++) {
+      copies[i].onclick = function(){
+        navigator.clipboard.writeText(this.textContent);
+      }
+    }
+  </script>
+</body>
+
+</html>
